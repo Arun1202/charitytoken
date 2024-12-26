@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CharityToken Frontend</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+            width: 100%;
+        }
+        #donateButton {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #donateButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CharityToken Dashboard</h1>
+        <p>Interact with the CharityToken smart contract.</p>
+
+        <div>
+            <h3>Your Balance</h3>
+            <p id="balance">Loading...</p>
+        </div>
+
+        <div>
+            <h3>Donate Tokens</h3>
+            <input type="number" id="donationAmount" placeholder="Enter amount to donate" />
+            <button id="donateButton">Donate</button>
+        </div>
+
+        <div>
+            <h3>Transfer Tokens</h3>
+            <input type="text" id="transferTo" placeholder="Recipient address" />
+            <input type="number" id="transferAmount" placeholder="Amount to transfer" />
+            <button id="transferButton">Transfer</button>
+        </div>
+    </div>
+
+    <script>
+        // Replace with your contract's deployed address and ABI
+        const contractAddress = "0xYourContractAddressHere";
+        const contractABI = [
+            {
+                "constant": true,
+                "inputs": [{"name": "_account", "type": "address"}],
+                "name": "balanceOf",
+                "outputs": [{"name": "", "type": "uint256"}],
+                "type": "function"
+            },
+            {
+                "constant": false,
+                "inputs": [{"name": "_to", "type": "address"}, {"name": "_amount", "type": "uint256"}],
+                "name": "transfer",
+                "outputs": [{"name": ""
